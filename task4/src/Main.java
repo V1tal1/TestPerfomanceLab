@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String path = scan.next();
-        System.out.print(minMoves(path));
+        if (args.length != 1) {
+            System.out.println("Количество аргументов должно быть 1");
+            return;
+        }
+        System.out.print(minMoves(args[0]));
     }
 
     public static int minMoves(String path){
@@ -26,17 +28,14 @@ public class Main {
     public static  ArrayList<Integer> readFile(String path){
         ArrayList<Integer> nums = new ArrayList<>();
 
-        Scanner input = null;
-        try {
-            input = new Scanner(new File(path));
+        try ( Scanner input  = new Scanner(new File(path));){
+            while (input.hasNextInt()) {
+                nums.add(input.nextInt());
+            }
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
 
-        while (input.hasNextInt()) {
-            nums.add(input.nextInt());
-        }
-        input.close();
         return nums;
     }
 }

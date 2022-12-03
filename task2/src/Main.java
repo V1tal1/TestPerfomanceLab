@@ -7,9 +7,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String path1 = scan.next();
-        String path2 = scan.next();
+        if (args.length != 2)
+        {
+            System.out.println("Количество аргументов должно быть 2");
+            return;
+        }
+        String path1 = args[0];
+        String path2 = args[1];
 
         checkPointsIsCircle(path1, path2);
     }

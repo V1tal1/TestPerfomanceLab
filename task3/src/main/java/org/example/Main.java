@@ -9,13 +9,17 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String pathTests = scan.next();
-        String pathValues = scan.next();
+        if (args.length != 2)
+        {
+            System.out.println("Количество аргументов должно быть 2");
+            return;
+        }
+        String pathTests = args[0];
+        String pathValues = args[1];
         testReport(pathTests,pathValues);
 
     }
